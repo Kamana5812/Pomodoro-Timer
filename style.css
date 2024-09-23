@@ -1,0 +1,157 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1c1c1c; /* Dark theme background */
+    transition: background-color 0.5s ease-in-out;
+}
+
+.pomodoro-container {
+    text-align: center;
+    background-color: #333; /* Dark container background */
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.pomodoro-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 99, 71, 0.5), rgba(0, 255, 255, 0.3));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.pomodoro-container:hover {
+    transform: scale(1.05);
+}
+
+.pomodoro-container:hover:before {
+    opacity: 1;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+#timer {
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #00ffcc; /* Neon color for the timer */
+    animation: pulse 1s infinite; /* Timer pulse animation */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    background-color: #00ffcc;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 50%;
+}
+
+button:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+button:hover {
+    background-color: #ff6347;
+    box-shadow: 0px 10px 20px rgba(255, 99, 71, 0.6);
+    transform: translateY(-5px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .pomodoro-container {
+        padding: 40px;
+        max-width: 350px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #timer {
+        font-size: 60px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pomodoro-container {
+        padding: 30px;
+        max-width: 280px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #timer {
+        font-size: 50px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
